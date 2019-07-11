@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
-apt autoremove
-apt update
+DEBIAN_FRONTEND=noninteractive apt-get autoremove
+DEBIAN_FRONTEND=noninteractive apt-get update
 
 rm -f /home/vagrant/*.sh
 

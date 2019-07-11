@@ -1,4 +1,7 @@
 {
+    "variables": {
+        "ssh_pubkey": "{{env `GITHUB_SSH_PUBKEY_URL`}}"
+    },
     "builders": [
         {
             "type": "virtualbox-iso",
@@ -84,4 +87,4 @@
       "compression_level": "8",
       "output": "output/ubuntu-18.04.2-amd64-{{.Provider}}.box"
     }]
-  }
+}

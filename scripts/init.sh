@@ -1,4 +1,4 @@
 #!/bin/bash -eux
 
-apt update
-apt upgrade -y
+DEBIAN_FRONTEND=noninteractive apt-get update
+DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
