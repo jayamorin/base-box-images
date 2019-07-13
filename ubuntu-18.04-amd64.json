@@ -1,7 +1,4 @@
 {
-    "variables": {
-        "ssh_pubkey": "{{env `GITHUB_SSH_PUBKEY_URL`}}"
-    },
     "builders": [
         {
             "type": "virtualbox-iso",
@@ -74,7 +71,10 @@
         {
             "type": "shell",
             "script": "scripts/setup.sh",
-            "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+            "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+            "environment_vars": [
+                "GITHUB_SSH_PUBKEY_URL={{user `github_ssh_pubkey_url`}}"
+            ]
         },
         {
             "type": "shell",
