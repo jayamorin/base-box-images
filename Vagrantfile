@@ -13,9 +13,15 @@ Vagrant.configure("2") do |config|
     vb.cpus = 1
   end
 
-  config.vm.provision :shell, :inline => "wget --no-check-certificate 'https://github.com/jayamorin.keys' -O ->> /home/ubuntu/.ssh/authorized_keys"
-  config.vm.provision :shell, :inline => "chown ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys"
-  config.vm.provision :shell, :inline => "chmod 644 /home/ubuntu/.ssh/authorized_keys"
+  $ubuntu_ssh_pubkey = <<-SCRIPT
+  mkdir -p /home/ubuntu/.ssh
+  chmod 700 /home/ubuntu/.ssh
+  wget --no-check-certificate #{ENV['GITHUB_SSH_PUBKEY_URL']} -O ->> /home/ubuntu/.ssh/authorized_keys
+  chown -R ubuntu:ubuntu /home/ubuntu/.ssh
+  SCRIPT
+
+  config.vm.provision "shell", inline: $ubuntu_ssh_pubkey
+
   config.vm.provision :shell, :inline => "sed -i '/^vagrant.*PASSWD.*ALL$/d' /etc/sudoers"
   
   config.ssh.insert_key = false
