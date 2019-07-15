@@ -73,7 +73,7 @@
             "script": "scripts/setup.sh",
             "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
             "environment_vars": [
-                "GITHUB_SSH_PUBKEY_URL={{user `github_ssh_pubkey_url`}}"
+                "GITHUB_SSH_PUBKEY_URL={{user `GITHUB_SSH_PUBKEY_URL`}}"
             ]
         },
         {

@@ -4,7 +4,7 @@
 mkdir -p /home/vagrant/.ssh
 chmod 700 /home/vagrant/.ssh
 chown vagrant:vagrant /home/vagrant/.ssh
-# Download github ssh pubkey from args -var 'github_ssh_pubkey_url=https://github.com/username.keys'
+# Download github ssh pubkey from args -var 'GITHUB_SSH_PUBKEY_URL=https://github.com/username.keys'
 wget --no-check-certificate "$GITHUB_SSH_PUBKEY_URL" -O ->> /home/vagrant/.ssh/authorized_keys
 chown vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 chmod 644 /home/vagrant/.ssh/authorized_keys

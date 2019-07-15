@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  validate:
+    docker:
+      - image: hashicorp/packer:1.4.2
+    steps:
+      - checkout
+      - run:
+          name: Validate ubuntu-18.04-amd64.json template
+          command: packer validate ubuntu-18.04-amd64.json
+  build-base:
+    docker:
+      - image: hashicorp/packer:1.4.2
+    steps:
+      - checkout
+      - run:
+          name: Build ubuntu-18.04-amd64.json template
+          command: packer build -var "GITHUB_SSH_PUBKEY_URL=$GITHUB_SSH_PUBKEY_URL" ubuntu-18.04-amd64.json
+
+workflows:
+  version: 2
+  base-images:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
+
+
