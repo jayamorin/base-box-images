@@ -1,5 +1,9 @@
 # base-box-images
 
+[![CircleCI](https://circleci.com/gh/jayamorin/base-images.svg?style=svg)](https://circleci.com/gh/jayamorin/base-images)
+
+[Packer](https://www.packer.io/) templates for [Vagrant](https://www.vagrantup.com/) base boxes
+
 Build:
 
 ```bash
