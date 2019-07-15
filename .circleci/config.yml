@@ -21,9 +21,10 @@ workflows:
   version: 2
   base-images:
     jobs:
-      - build:
+      - validate
+      - build-base:
           filters:
             branches:
               only: master
-
-
+          requires:
+            - validate
