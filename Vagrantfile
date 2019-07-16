@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "public_network", bridge: "wlp58s0"
 
   config.vm.provider "virtualbox" do |vb|
-    vb.gui = true
+    vb.gui = false
     vb.memory = "1024"
     vb.cpus = 1
   end
