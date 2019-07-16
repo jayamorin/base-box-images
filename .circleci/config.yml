@@ -2,7 +2,7 @@ version: 2
 jobs:
   validate:
     docker:
-      - image: hashicorp/packer:1.4.2
+      - image: jayamorin/packer-builder:latest
     steps:
       - checkout
       - run:
@@ -10,7 +10,7 @@ jobs:
           command: packer validate ubuntu-18.04-amd64.json
   build-base:
     docker:
-      - image: hashicorp/packer:1.4.2
+      - image: jayamorin/packer-builder:latest
     steps:
       - checkout
       - run:
